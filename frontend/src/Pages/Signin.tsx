@@ -13,8 +13,14 @@ import { Separator } from "@/components/ui/separator"
 import { Link } from "react-router-dom"
 
 const Signin = () => {
+  const myStyle = {
+    border: "1px solid rgba(255, 255, 255, 0.18)", boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
+    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))",
+    backdropFilter: "blur(10px)",
+    webkitBackdropFilter: "blur(10px)"
+}
   return (
-    <Card className="w-[90vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] 2xl:w-[20vw] flex items-center justify-center">
+    <Card className="w-[90vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] 2xl:w-[20vw] flex items-center justify-center mycard" style={myStyle}>
     <div className="w-full">
             <CardHeader>
                     <CardTitle className="text-4xl font-bold mb-[0.2rem] text-primary">Sign In</CardTitle>
