@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
+import { Link } from "react-router-dom"
 
 const Signup = () => {
         return (
@@ -37,8 +38,10 @@ const Signup = () => {
                                                         </div>
                                                 </div>
                                         </CardContent>
-                                        <CardFooter className="flex">
+                                        <CardFooter className="flex flex-col">
                                                 <Button className="w-full">Submit</Button>
+                                                <Separator className="mt-4 mb-1"/>
+                                                <p className="text-xs text-muted-foreground">Already have an account? <Link to="/signin" className="text-primary hover:text-foreground cursor-pointer">Sign In</Link></p>
                                         </CardFooter>
                                 </form>
                         </div>

@@ -3,6 +3,7 @@ import './App.css'
 import { ThemeProvider } from "@/components/theme-provider"
 import Dashboard from './Pages/Dashboard'
 import Signup from './Pages/Signup'
+import Signin from './Pages/Signin'
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
           </Routes>
         </Router>
-      </div>
+        </div>
     </ThemeProvider>
   )
 }
