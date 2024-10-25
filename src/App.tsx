@@ -9,7 +9,7 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="w-screen h-screen flex justify-center items-center">
+      <div className="w-screen flex justify-center items-center min-h-screen">
         <Router>
           <Routes>
             <Route path="/" element={<Dashboard />} />
