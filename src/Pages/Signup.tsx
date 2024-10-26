@@ -22,9 +22,7 @@ const Signup = () => {
                 const cpassword = (document.getElementById('cpassword') as HTMLInputElement).value;
                 // Check if password and confirm password match and password should be atleast 8 characters long
                 // check if name is empty then focus on name input
-                // if(name==="" || name.length <= 3) (document.getElementById('name') as HTMLInputElement).focus();
-                // if(email==="" || email.length <= 3) (document.getElementById('email') as HTMLInputElement).focus();
-                // if((password !== cpassword) || password==="") return alert('Passwords do not match');
+                if((password !== cpassword) || password==="") return alert('Passwords do not match');
                 // alert('Submitted');
                 const response = await fetch('https://writeit-backend.up.railway.app/api/auth/signup', {
                         method: 'POST',
