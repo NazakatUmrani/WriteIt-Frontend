@@ -1,18 +1,9 @@
 import { MainNav } from '@/components/MainNav'
-import Note from '@/components/Note'
 import Notes from '@/components/Notes'
 import { Search } from '@/components/Search'
 import { UserNav } from '@/components/UserNav'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
 
 const Dashboard = () => {
-        const navigate = useNavigate();
-        useEffect(() => {
-                if(!localStorage.getItem('auth-token')) {
-                        navigate('/signin');
-                }
-        }, [])
         return (
                 <>
                         <div className="flex flex-col w-screen">
