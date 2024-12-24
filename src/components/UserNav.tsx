@@ -1,15 +1,16 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-// import { DropdownMenuShortcut } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { useNavigate } from "react-router";
 
 export function UserNav() {
-//   const myStyle = {
-//     border: "1px solid rgba(255, 255, 255, 0.18)", boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
-//     background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))",
-//     backdropFilter: "blur(10px)",
-//     webkitBackdropFilter: "blur(10px)"
-// }
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth-token');
+    navigate('/signin');
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,7 +36,7 @@ export function UserNav() {
           <DropdownMenuItem className="hover:bg-[#2b2a2a] hover:border hover:border-border focus:outline-none">Toggle Theme</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="my-2 border mx-2"/>
-        <DropdownMenuItem className="hover:bg-[#2b2a2a] hover:border hover:border-border focus:outline-none mx-2">Log out</DropdownMenuItem>
+        <DropdownMenuItem className="hover:bg-[#2b2a2a] hover:border hover:border-border focus:outline-none mx-2" onClick={handleLogout}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
