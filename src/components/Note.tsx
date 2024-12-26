@@ -1,23 +1,17 @@
-import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { EllipsisVertical } from 'lucide-react';
-import { reduceStr } from '@/lib/utils';
 
 const Note = (props: { note: { title: string; description: string; }; }) => {
   // const myStyle = {
@@ -27,11 +21,10 @@ const Note = (props: { note: { title: string; description: string; }; }) => {
   //   webkitBackdropFilter: "blur(10px)"
   // }
   return (
-    // <div className='w-full h-full'>
     <Card className='text-left h-full w-full'>
       <CardHeader className='p-4'>
         <div className="flex justify-between">
-        <CardTitle className='text-primary text-xl ml-2'>{props.note.title}</CardTitle>
+        <CardTitle className='text-primary text-xl ml-2 truncate'>{props.note.title}</CardTitle>
         <DropdownMenu>
           <DropdownMenuTrigger className='p-0 h-8 w-8 rounded-full items-baseline'><span className="grid place-content-center"><EllipsisVertical /></span></DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -45,10 +38,9 @@ const Note = (props: { note: { title: string; description: string; }; }) => {
       </CardHeader>
       <Separator className='mb-2' />
       <CardContent>
-        <p>{reduceStr(props.note.description)}</p>
+        <p className='line-clamp-4'>{props.note.description}</p>
       </CardContent>
     </Card>
-    // </div>
   )
 }
 
