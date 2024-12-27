@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -29,19 +30,13 @@ const Signin = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
-      if(response.status == 400){
-        alert(data.error);
-        return;
+      if(response.status!==200 && !data.success){
+        return toast.error(data.message);
       }
-      if(response.status == 500){
-        alert(data.error);
-        return;
-      }
-      console.log(data);
       localStorage.setItem("auth-token", data.authToken);
       // if success redirect to dashboard
       navigate("/");
+      toast.success("Succesfully logged in");
     } catch (error) {
       console.error(error);
     }

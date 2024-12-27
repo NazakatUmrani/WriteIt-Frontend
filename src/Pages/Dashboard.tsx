@@ -2,10 +2,8 @@ import { MainNav } from "@/components/MainNav";
 import Notes from "@/components/Notes";
 import { Search } from "@/components/Search";
 import { UserNav } from "@/components/UserNav";
-import { useEffect, useState } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useLoader } from '../context/LoaderContext';
-import Loader from "@/components/Loader";
 import { Plus } from "lucide-react";
 
 interface Note {
@@ -14,13 +12,17 @@ interface Note {
 	description: string;
   }
   
-const Dashboard = () => {
-  const navigate = useNavigate();
-  const { setIsLoading, isLoading } = useLoader();
-  const [notes, setNotes] = useState<Note[]>([]);
+type DashboardProps = {
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  isLoading: boolean;
+}
 
+const Dashboard: FunctionComponent<DashboardProps> = ({ setIsLoading, isLoading }: DashboardProps) => {
+  const navigate = useNavigate();
+  const [notes, setNotes] = useState<Note[]>([]);
   useEffect(() => {
     setIsLoading(true);
+	console.log(isLoading);
     const token = localStorage.getItem("auth-token");
     if (!token) {
       navigate("/signin");
@@ -60,12 +62,8 @@ const Dashboard = () => {
 		  fetchNotes();
       setIsLoading(false);
     }
-  }, [navigate, setIsLoading]);
+  }, []);
   
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <>
       <div className="flex flex-col w-screen h-screen min-h-screen">

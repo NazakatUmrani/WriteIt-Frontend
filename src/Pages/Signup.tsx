@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -38,10 +39,14 @@ const Signup = () => {
       }
     );
     const data = await response.json();
-//     console.log(data);
+    if(!data.success){
+      return toast.error(data.message);
+    }
+    //console.log(data);
     localStorage.setItem("auth-token", data.authToken);
     // if success redirect to dashboard
     navigate("/");
+    return toast.success("Succesfully signed up in");
   };
   return (
     <Card className="w-[90vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] 2xl:w-[20vw] flex items-center justify-center mycard">
